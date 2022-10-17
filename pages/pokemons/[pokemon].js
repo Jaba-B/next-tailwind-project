@@ -36,7 +36,6 @@ export async function getStaticProps(context) {
     console.log(pokemonId)
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
     const data = await res.json();
-    // const info = JSON.stringify(res)
     return {
         props: {pokemons: data}
     }
@@ -45,7 +44,6 @@ export async function getStaticProps(context) {
 export default function DetailPage({pokemons}) {
     const router = useRouter();
     const pokemonId = router.query.pokemon;
-    console.log(pokemons)
     return (
         <div className='text-center bg-rose-50'>
                 <div>   
