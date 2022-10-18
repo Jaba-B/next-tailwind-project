@@ -1,4 +1,7 @@
-function Input(props) {
+interface Input {
+    name: string,
+}
+function Input(props: Input) {
     return (
         <div className="m-5">
             <label className="block text-l font-medium text-gray-700 my-2">{props.name}</label>

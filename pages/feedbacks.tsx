@@ -13,22 +13,12 @@ export default function Feedbacks() {
                 <Input name='Age' />
                 <Input name='Email' />
                 <Input name='Mobile' />
-                <label for='feedback' className='block text-l font-medium text-gray-700'>Feedback</label>
+                <label htmlFor='feedback' className='block text-l font-medium text-gray-700'>Feedback</label>
                 <textarea id='feedback' placeholder='Feedback' className='w-80 h-80 m-5 border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-800 focus:ring-1 focus:ring-indigo-500'></textarea>
                 <div>
                 <Button url='/' name='submit' className='my-5' type='submit' />
                 </div>
             </form>
-            {/* <Input name='First name' />
-            <Input name='Last name' />
-            <Input name='Age' />
-            <Input name='Email' />
-            <Input name='Mobile' />
-            <label for='feedback' className='block text-l font-medium text-gray-700'>Feedback</label>
-            <textarea id='feedback' placeholder='Feedback' className='w-80 h-80 m-5 border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-800 focus:ring-1 focus:ring-indigo-500'></textarea>
-            <div>
-            <Button url='/' name='submit' className='my-5'/>
-            </div> */}
         </div>
 
     )
