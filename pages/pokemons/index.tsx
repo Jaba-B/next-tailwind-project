@@ -1,3 +1,4 @@
+import { GetStaticPropsContext } from 'next';
 import Link from 'next/link';
 import Button from '../../components/Button'
 
@@ -10,12 +11,18 @@ export const getStaticProps = async () => {
     }
 }
 
-export default function Pokemons({pokemons}) {
+interface Pokemon {
+    name: string,
+    url: string,
+    pokemons: []
+}
+
+export default function Pokemons({pokemons}: Pokemon) {
     
-    const pokemonsRenderer = pokemons.map((pokemon) => (
+    const pokemonsRenderer = pokemons.map((pokemon: Pokemon) => (
         <div key={pokemon.name} className='bg-rose-50 m-4 text-center'>
             <p className='font-bold text-xl mb-2 text-blue-500 uppercase'> {pokemon.name}</p>
-            <Button name = 'More Info'  url={`/pokemons/${(pokemon.url).slice(-2)}`}/>
+            <Button name = 'More Info' className='' type=''  url={`/pokemons/${(pokemon.url).slice(-2)}`}/>
         </div>
     ))
     return (

@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Button from '../../components/Button';
+import { Url } from 'url';
 
 export async function getStaticPaths() {
     return {
@@ -31,7 +32,7 @@ export async function getStaticPaths() {
     }
 }
 
-export async function getStaticProps(context) {
+export async function getStaticProps(context: any) {
     const pokemonId = context.params.pokemon;
     console.log(pokemonId)
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
@@ -41,7 +42,12 @@ export async function getStaticProps(context) {
     }
 }
 
-export default function DetailPage({pokemons}) {
+interface PokemonsProps {
+    [key: string]: any;
+    props: []
+}
+
+export default function DetailPage({pokemons}: PokemonsProps) {
     const router = useRouter();
     const pokemonId = router.query.pokemon;
     return (
@@ -58,7 +64,6 @@ export default function DetailPage({pokemons}) {
                     <li className='py-1'> <strong>First ability: </strong> {pokemons.abilities[0].ability.name} </li>
                     <li className='py-1'> <strong>Second ability: </strong> {pokemons.abilities[1].ability.name} </li>
                     <li className='py-1'> <strong>First type: </strong> {pokemons.types[0].type.name} </li>
-                    <li className='py-1'> <strong>Second type: </strong> {pokemons.types[1].type.name} </li>
                     <li className='py-1'> <strong>Base experience: </strong> {pokemons.base_experience} </li>
                     <li className='py-1'> <strong>Base hp: </strong> {pokemons.stats[0].base_stat} </li>
                     <li className='py-1'> <strong>Base attack: </strong> {pokemons.stats[1].base_stat} </li>
@@ -67,7 +72,7 @@ export default function DetailPage({pokemons}) {
                     <li className='py-1'> <strong>Base special-defense: </strong> {pokemons.stats[4].base_stat} </li>
                     <li className='py-1'> <strong>Base speed: </strong> {pokemons.stats[5].base_stat} </li>
                 </ul>
-                <Button name = 'Go Back' url={`/pokemons`}/>
+                <Button name = 'Go Back' url={`/pokemons`} className='' type=''/>
                 <div>
                     <Image width={200} height={200} className="" src = {`${pokemons.sprites.back_shiny}`} alt="logo"/>
                     <Image width={200} height={200} className="" src = {`${pokemons.sprites.front_shiny}`} alt="logo"/>

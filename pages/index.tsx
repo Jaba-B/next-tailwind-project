@@ -1,6 +1,21 @@
 import Image from 'next/image'
 
-export default function Home() {
+interface Home {
+  src: string,
+  name: string,
+  founded: string,
+  stadium: string,
+  coach: string,
+  country: string,
+  city: string,
+  league: string
+}
+
+interface PageProps {
+  props: Home[]
+}
+
+export default function Home(): PageProps {
   const info = [
     {'src': `monaco`, 'name': 'Association Sportive de Monaco', 'founded': '1924', 'stadium': 'Louis II Stadium', 'coach': 'Philippe Clement', 'country':'Monaco', 'city': 'Monaco', 'league':'Ligue 1'},
     {'src': `az`, 'name': 'AZ Alkmaar FC', 'founded': '1967', 'stadium': 'AFAS stadium', 'coach': 'Pascal Jansen', 'country':'Netherlands', 'city': 'Alkmaar', 'league':'Eredivisie'},
