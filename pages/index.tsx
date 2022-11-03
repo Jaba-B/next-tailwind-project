@@ -1,4 +1,6 @@
-import Image from 'next/image'
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { enGB, ka } from '../translations';
 
 interface Home {
   src: string,
@@ -16,6 +18,11 @@ interface PageProps {
 }
 
 export default function Home(): PageProps {
+  const router = useRouter();
+  const { locale } = router;
+  const t = locale === "en-GB" ? enGB : ka;
+
+
   const info = [
     {'src': `monaco`, 'name': 'Association Sportive de Monaco', 'founded': '1924', 'stadium': 'Louis II Stadium', 'coach': 'Philippe Clement', 'country':'Monaco', 'city': 'Monaco', 'league':'Ligue 1'},
     {'src': `az`, 'name': 'AZ Alkmaar FC', 'founded': '1967', 'stadium': 'AFAS stadium', 'coach': 'Pascal Jansen', 'country':'Netherlands', 'city': 'Alkmaar', 'league':'Eredivisie'},
@@ -42,9 +49,9 @@ export default function Home(): PageProps {
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2 text-blue-500"> {team.name} </div>
         <ul>
-          <li> <strong>Founded: </strong> {team.founded} </li>
-          <li> <strong>Stadium: </strong> {team.stadium} </li>
-          <li> <strong>President: </strong> {team.coach} </li>
+          <li> <strong>{t.founded}: </strong> {team.founded} </li>
+          <li> <strong>{t.stadium}: </strong> {team.stadium} </li>
+          <li> <strong>{t.president}: </strong> {team.coach} </li>
         </ul>
       </div>
       <div className="px-6 py-4">

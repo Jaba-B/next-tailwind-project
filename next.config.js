@@ -6,6 +6,10 @@ const nextConfig = {
 
 // module.exports = nextConfig
 module.exports = {
+  i18n: {
+    locales: ["en-GB", "ka"],
+    defaultLocale: "en-GB"
+  },
   images: {
     domains: ['raw.githubusercontent.com']
   }
