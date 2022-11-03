@@ -1,6 +1,6 @@
-import { GetStaticPropsContext } from 'next';
-import Link from 'next/link';
-import Button from '../../components/Button'
+import Button from '../../components/Button';
+import { useRouter } from 'next/router';
+import { enGB, ka } from '../../translations';
 
 export const getStaticProps = async () => {
     const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=21');
@@ -18,11 +18,14 @@ interface Pokemon {
 }
 
 export default function Pokemons({pokemons}: Pokemon) {
+    const router = useRouter();
+    const { locale } = router;
+    const t = locale === "en-GB" ? enGB : ka;
     
     const pokemonsRenderer = pokemons.map((pokemon: Pokemon) => (
         <div key={pokemon.name} className='bg-rose-50 m-4 text-center'>
             <p className='font-bold text-xl mb-2 text-blue-500 uppercase'> {pokemon.name}</p>
-            <Button name = 'More Info' className='' type=''  url={`/pokemons/${(pokemon.url).slice(-2)}`}/>
+            <Button name = {t.pokemonBtn} className='' type=''  url={`pokemons/${(pokemon.url).slice(-3)}`}/>
         </div>
     ))
     return (
